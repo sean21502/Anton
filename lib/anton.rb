@@ -33,9 +33,9 @@ require './lib/roadmap'
       @messages = JSON.parse(response.body)
     end 
 
-    def create_messages(sender, recipient_id, token, subject, text)
+    def create_messages(sender, recipient_id, subject, text)
       new_message = self.class.post("/messages", 
-        body: {"sender": sender, "recipient_id": recipient_id, "token": token, "subject": subject, "stripped-text": text},headers: { "authorization" => @auth_token })
+        body: {"sender": sender, "recipient_id": recipient_id, "subject": subject, "stripped-text": text},headers: { "authorization" => @auth_token })
     end
 
   private
