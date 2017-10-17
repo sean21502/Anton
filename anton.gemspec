@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
    s.description   = 'A client for the Bloc API'
    s.authors       = ['Sean Hite']
    s.email         = 'Seanhite@gmail.com'
-   s.files         = ['lib/anton.rb']
+   s.files         = ['lib/anton.rb', 'lib/roadmap.rb']
    s.require_paths = ["lib"]
    s.homepage      =
      'http://rubygems.org/gems/anton'
