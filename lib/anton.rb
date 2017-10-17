@@ -24,6 +24,20 @@ require './lib/roadmap'
       @mentor_data = JSON.parse(response.body)
     end  
 
+    def get_messages(page = nil)
+      if page == nil
+        response = self.class.get(base_api_endpoint("message_threads"), headers: { "authorization" => @auth_token })
+      else
+        response = self.class.get(base_api_endpoint("message_threads?=page#{page}"), headers: { "authorization" => @auth_token })
+      end  
+      @messages = JSON.parse(response.body)
+    end 
+
+    def create_messages(sender, recipient_id, token, subject, text)
+      new_message = self.class.post("/messages", 
+        body: {"sender": sender, "recipient_id": recipient_id, "token": token, "subject": subject, "stripped-text": text},headers: { "authorization" => @auth_token })
+    end
+
   private
 
     def base_api_endpoint(end_point)
