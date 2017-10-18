@@ -34,7 +34,7 @@ require './lib/roadmap'
     end 
 
     def create_messages(sender, recipient_id, subject, text)
-      new_message = self.class.post(("messages"),
+      new_message = self.class.post(base_api_endpoint("messages"),
         body: {"sender": sender, "recipient_id": recipient_id, "subject": subject, "stripped-text": text }, headers: { "authorization" => @auth_token })
     end
 
